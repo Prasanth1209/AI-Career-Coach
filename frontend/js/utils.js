@@ -1,5 +1,11 @@
 // AI Career Coach - Utility Helpers & Toast Notifications
 
+// Global API Base URL Configuration for Production (Render) and Local Development
+var API_BASE = (typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"))
+    ? "http://localhost:5000"
+    : "https://ai-career-coach-vge1.onrender.com";
+window.API_BASE = API_BASE;
+
 function showToast(message, type = "info", duration = 4000) {
     let toastContainer = document.getElementById("toast-container");
     if (!toastContainer) {

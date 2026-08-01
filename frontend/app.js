@@ -1298,7 +1298,7 @@ function initAuthListeners() {
             }
 
             try {
-                const response = await fetch("/api/auth/register", {
+                const response = await fetch(`${API_BASE}/api/auth/register`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ fullName: nameVal, name: nameVal, email: emailVal, password: passVal, confirmPassword: confirmPassVal, college: collegeVal, branch: branchVal })
@@ -1340,7 +1340,7 @@ function initAuthListeners() {
             }
 
             try {
-                const response = await fetch("/api/auth/login", {
+                const response = await fetch(`${API_BASE}/api/auth/login`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email: emailVal, password: passVal })
@@ -1374,7 +1374,7 @@ async function checkExistingAuthSession() {
     }
 
     try {
-        const response = await fetch("/api/auth/me", {
+        const response = await fetch(`${API_BASE}/api/auth/me`, {
             headers: { "Authorization": `Bearer ${token}` }
         });
         const data = await response.json();
@@ -1685,12 +1685,12 @@ async function performResumeAnalysis(text, file = null) {
                 formData.append("targetRole", targetRole);
                 if (text) formData.append("text", text);
 
-                response = await fetch("/api/resume/analyze", {
+                response = await fetch(`${API_BASE}/api/resume/analyze`, {
                     method: "POST",
                     body: formData
                 });
             } else {
-                response = await fetch("/api/resume/analyze", {
+                response = await fetch(`${API_BASE}/api/resume/analyze`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ text, targetRole })
@@ -2350,7 +2350,7 @@ function renderPlacementRecommendations() {
 const JobPortalService = {
     async fetchJobOpenings() {
         try {
-            const response = await fetch("/api/jobs");
+            const response = await fetch(`${API_BASE}/api/jobs`);
             if (response && response.ok) {
                 const data = await response.json();
                 if (data && data.success && Array.isArray(data.jobs) && data.jobs.length > 0) {
@@ -3579,7 +3579,7 @@ function initProfileFormListeners() {
 
             const token = localStorage.getItem("authToken");
             try {
-                const response = await fetch("/api/auth/update-profile", {
+                const response = await fetch(`${API_BASE}/api/auth/update-profile`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
                     body: JSON.stringify({ name, fullName: name, college, branch, graduation_year: parseInt(gradYear) })
@@ -3643,7 +3643,7 @@ function initProfileFormListeners() {
 
             const token = localStorage.getItem("authToken");
             try {
-                const response = await fetch("/api/auth/change-password", {
+                const response = await fetch(`${API_BASE}/api/auth/change-password`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
                     body: JSON.stringify({ currentPassword: currentPass, newPassword: newPass })

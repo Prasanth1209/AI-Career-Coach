@@ -123,8 +123,8 @@ window.handleCredentialResponse = async function(response) {
     });
 
     try {
-        console.log("[Google Auth] Sending Google credential to backend /api/auth/google...");
-        const res = await fetch("/api/auth/google", {
+        console.log(`[Google Auth] Sending Google credential to backend ${API_BASE}/api/auth/google...`);
+        const res = await fetch(`${API_BASE}/api/auth/google`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ token: idToken, credential: idToken, accessToken: response.access_token })
@@ -198,8 +198,8 @@ async function processGoogleAccessToken(accessToken) {
     });
 
     try {
-        console.log("[Google Auth] Verifying access token with backend /api/auth/google...");
-        const res = await fetch("/api/auth/google", {
+        console.log(`[Google Auth] Verifying access token with backend ${API_BASE}/api/auth/google...`);
+        const res = await fetch(`${API_BASE}/api/auth/google`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ accessToken: accessToken, token: accessToken })
@@ -314,7 +314,7 @@ function triggerGoogleRedirectFallback() {
     console.warn("⚠️ [Google Auth Notice] If you see '[GSI_LOGGER]: The given origin is not allowed for the given client ID':");
     console.info("   👉 Add '" + window.location.origin + "' under 'Authorized JavaScript Origins' & 'Authorized Redirect URIs' in Google Cloud Console for Client ID: " + GOOGLE_CLIENT_ID);
 
-    const redirectUri = window.location.origin; // e.g. http://localhost:5000
+    const redirectUri = window.location.origin; // Current origin (Vercel or localhost)
     const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?` +
         `client_id=${encodeURIComponent(GOOGLE_CLIENT_ID)}` +
         `&redirect_uri=${encodeURIComponent(redirectUri)}` +
