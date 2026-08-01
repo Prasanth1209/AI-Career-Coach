@@ -82,3 +82,51 @@ function initNavListeners() {
 
 window.switchTab = switchTab;
 window.initNavListeners = initNavListeners;
+
+// ── Mobile Sidebar Toggle ──────────────────────────────────
+function initMobileSidebarToggle() {
+    const sidebar    = document.querySelector('.sidebar');
+    const backdrop   = document.getElementById('sidebar-backdrop');
+    const toggleBtn  = document.getElementById('mobile-sidebar-toggle');
+
+    if (!sidebar || !backdrop || !toggleBtn) return;
+
+    function openSidebar() {
+        sidebar.classList.add('open');
+        backdrop.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+        toggleBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('visible');
+        document.body.style.overflow = '';
+        toggleBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+    });
+
+    backdrop.addEventListener('click', closeSidebar);
+
+    // Auto-close sidebar when a nav item is clicked on mobile
+    document.querySelectorAll('.nav-menu .nav-item').forEach(item => {
+        item.addEventListener('click', () => {
+            if (window.innerWidth <= 768) closeSidebar();
+        });
+    });
+
+    // Resize: reset state when switching from mobile to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove('open');
+            backdrop.classList.remove('visible');
+            document.body.style.overflow = '';
+            toggleBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        }
+    });
+}
+
+window.initMobileSidebarToggle = initMobileSidebarToggle;

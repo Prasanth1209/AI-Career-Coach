@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { name: "initFloatingAiAssistant", fn: initFloatingAiAssistant },
         { name: "startAnimatedCounters", fn: startAnimatedCounters },
         { name: "checkExistingAuthSession", fn: checkExistingAuthSession },
+        { name: "initMobileSidebarToggle", fn: initMobileSidebarToggle },
         { name: "refreshModernIcons", fn: refreshModernIcons }
     ];
 

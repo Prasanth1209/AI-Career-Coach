@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/forms.css?v=4">
     <link rel="stylesheet" href="css/components.css?v=4">
     <link rel="stylesheet" href="css/modals.css?v=4">
-    <link rel="stylesheet" href="css/responsive.css?v=4">
+    <link rel="stylesheet" href="css/responsive.css?v=6">
     <!-- Ultra-Premium AI Startup Landing Page CSS -->
     <link rel="stylesheet" href="css/landing.css?v=8">
     <!-- Cloudflare Turnstile Script -->
@@ -1020,6 +1020,9 @@
     <!-- Main Application Body Shell -->
     <div class="app-container app-locked hidden" id="main-application-shell">
 
+        <!-- Mobile Sidebar Backdrop Overlay -->
+        <div id="sidebar-backdrop"></div>
+
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="brand">
@@ -1030,31 +1033,31 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="#" class="nav-item active" data-tab="dashboard">
+                <a href="#" class="nav-item active" data-tab="dashboard" data-label="Dashboard">
                     <i class="fa-solid fa-chart-line"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="#" class="nav-item" data-tab="resume-parser">
+                <a href="#" class="nav-item" data-tab="resume-parser" data-label="Resume Analyzer">
                     <i class="fa-solid fa-file-invoice"></i>
                     <span>Resume Analyzer</span>
                 </a>
-                <a href="#" class="nav-item" data-tab="skill-analyzer">
+                <a href="#" class="nav-item" data-tab="skill-analyzer" data-label="Skill Gap Analyzer">
                     <i class="fa-solid fa-sliders"></i>
                     <span>Skill Gap Analyzer</span>
                 </a>
-                <a href="#" class="nav-item" data-tab="roadmap">
+                <a href="#" class="nav-item" data-tab="roadmap" data-label="Learning Roadmap">
                     <i class="fa-solid fa-map-signs"></i>
                     <span>Learning Roadmap</span>
                 </a>
-                <a href="#" class="nav-item" data-tab="interview">
+                <a href="#" class="nav-item" data-tab="interview" data-label="Mock Interview">
                     <i class="fa-solid fa-comments"></i>
                     <span>Mock Interview</span>
                 </a>
-                <a href="#" class="nav-item" data-tab="recommendations">
+                <a href="#" class="nav-item" data-tab="recommendations" data-label="Company Prep &amp; Jobs">
                     <i class="fa-solid fa-building"></i>
-                    <span>Company Prep & Jobs</span>
+                    <span>Company Prep &amp; Jobs</span>
                 </a>
-                <a href="#" class="nav-item" data-tab="placement-tracker">
+                <a href="#" class="nav-item" data-tab="placement-tracker" data-label="Placement Tracker">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <span>Placement Tracker</span>
                 </a>
@@ -1079,6 +1082,11 @@
 
             <!-- Top Navigation bar -->
             <header class="top-nav">
+                <!-- Mobile Hamburger Toggle -->
+                <button type="button" id="mobile-sidebar-toggle" title="Open Menu" aria-label="Open sidebar menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
                 <div class="welcome-text">
                     <h1 id="page-title">Career Hub</h1>
                     <p id="page-subtitle">Track your prep, close skill gaps, and master interviews.</p>
