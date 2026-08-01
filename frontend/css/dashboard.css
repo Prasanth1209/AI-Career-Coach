@@ -1,0 +1,292 @@
+/* ============================================================
+   AI Career Coach — Dashboard Bento Grid v4
+   ============================================================ */
+
+/* ── Dashboard Stats Grid ── */
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+/* ── Dashboard Split Layout ── */
+.dashboard-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 16px;
+    align-items: start;
+}
+
+.dash-main-panel {
+    min-height: 320px;
+}
+
+.dash-side-panel {
+    min-height: 320px;
+}
+
+/* ── AI Advisor ── */
+.advisor-welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 20px;
+    gap: 12px;
+}
+
+.advisor-illustration {
+    width: 120px;
+    height: 90px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+    filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.35));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+
+.advisor-welcome-screen h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.advisor-welcome-screen p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    max-width: 380px;
+    line-height: 1.65;
+}
+
+/* ── Advisor Filled State ── */
+.advisor-action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.advisor-action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--border-radius-md);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.advisor-action-item:hover {
+    background: rgba(139, 92, 246, 0.08);
+    border-color: rgba(139, 92, 246, 0.25);
+    transform: translateX(4px);
+}
+
+.advisor-action-item i, .advisor-action-item svg {
+    font-size: 1rem;
+    margin-top: 1px;
+    flex-shrink: 0;
+}
+
+.advisor-action-item strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.advisor-action-item span {
+    font-size: 0.80rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+}
+
+/* ── Recommendations overview pane ── */
+.recommendations-overview-pane {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+/* ── Company fit grid ── */
+.company-fit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.company-fit-card {
+    background: rgba(14, 17, 28, 0.60);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.company-fit-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.4), transparent);
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.company-fit-card:hover {
+    border-color: rgba(139, 92, 246, 0.30);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(139,92,246,0.15);
+    transform: translateY(-4px);
+}
+
+.company-fit-card:hover::before {
+    opacity: 1;
+}
+
+.company-header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.company-logo-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    transition: var(--transition-smooth);
+}
+
+.company-fit-card:hover .company-logo-badge {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.35);
+}
+
+.company-name-block h4 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.company-name-block p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 1px;
+}
+
+.company-match-badge {
+    margin-left: auto;
+    padding: 4px 10px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.30);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--green);
+    white-space: nowrap;
+    font-family: var(--font-heading);
+}
+
+.company-stages-row {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.stage-chip {
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    font-size: 0.70rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.stage-chip.active-stage {
+    background: rgba(139, 92, 246, 0.12);
+    border-color: rgba(139, 92, 246, 0.30);
+    color: var(--purple-light);
+}
+
+.company-salary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.80rem;
+}
+
+.salary-label {
+    color: var(--text-muted);
+}
+
+.salary-value {
+    color: var(--cyan);
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+/* ── Job cards grid ── */
+.job-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.job-card {
+    background: rgba(14, 17, 28, 0.60);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.job-card:hover {
+    border-color: rgba(139, 92, 246, 0.28);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    transform: translateY(-3px);
+}
+
+/* ── Placement sub-header ── */
+.placement-sub-header {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 24px 0 14px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

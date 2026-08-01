@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Coach - Comprehensive Career Assistant Portal</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter (Premium Typography) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons (kept for JS-generated dynamic icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lucide Modern Icons Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- CSS Styling Modules v4 Ultra-Premium -->
+    <link rel="stylesheet" href="css/variables.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="css/auth.css?v=8">
+    <link rel="stylesheet" href="css/dashboard.css?v=4">
+    <link rel="stylesheet" href="css/sidebar.css?v=4">
+    <link rel="stylesheet" href="css/cards.css?v=4">
+    <link rel="stylesheet" href="css/forms.css?v=4">
+    <link rel="stylesheet" href="css/components.css?v=4">
+    <link rel="stylesheet" href="css/modals.css?v=4">
+    <link rel="stylesheet" href="css/responsive.css?v=4">
+    <!-- Ultra-Premium AI Startup Landing Page CSS -->
+    <link rel="stylesheet" href="css/landing.css?v=8">
+    <!-- Cloudflare Turnstile Script -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <!-- Google Identity Services Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Client-side PDF Extraction Library (pdf.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- Career Journey Animation Engine (No Three.js) -->
+</head>
+
+<body>
+
+    <!-- Aurora Animated Glass Background Blobs -->
+    <div class="ambient-glass-bg" aria-hidden="true">
+        <div class="glass-blob glass-blob-purple"></div>
+        <div class="glass-blob glass-blob-cyan"></div>
+        <div class="glass-blob glass-blob-pink"></div>
+        <div class="glass-blob glass-blob-blue"></div>
+        <div class="glass-blob glass-blob-emerald"></div>
+    </div>
+
+    <!-- Cursor Spotlight Effect -->
+    <div id="cursor-spotlight" aria-hidden="true"></div>
+
+    <!-- Google Sign-In Configuration -->
+    <div id="g_id_onload"
+         data-client_id="713380003451-82dj3bp6f2bnhvoub18elqhnmp2crljp.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse"
+         data-auto_select="false">
+    </div>
+
+    <!-- PUBLIC LANDING PAGE CONTAINER ($100M AI Startup Aesthetics) -->
+    <div id="landing-page-container">
+
+        <!-- Ambient Mesh Grid Overlay -->
+        <div class="landing-grid-bg" aria-hidden="true"></div>
+
+        <!-- 1. STICKY NAVBAR -->
+        <header class="landing-navbar" id="landing-navbar">
+            <div class="landing-container navbar-inner">
+                <a href="#hero" class="brand-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <span class="logo-text">AI Career <span>Coach</span></span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#companies">Companies</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button type="button" class="btn-nav-login btn-open-login">Login</button>
+                    <button type="button" class="btn-nav-primary btn-open-register">Get Started <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- 2. HERO SECTION -->
+        <section class="hero-section" id="hero">
+            <div class="landing-container hero-grid">
+                <div class="hero-content">
+                    <div class="section-badge">
+                        <i class="fa-solid fa-sparkles"></i> Your AI-Powered Career Partner
+                    </div>
+                    <h1 class="hero-headline">
+                        Land Your Dream Job with <span class="text-gradient">AI</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Analyze your resume, identify skill gaps, practice interviews, build roadmaps, and prepare for top companies—all in one intelligent platform.
+                    </p>
+                    <div class="hero-cta-group">
+                        <button type="button" class="btn-hero-primary btn-open-register">
+                            Get Started Free <i class="fa-solid fa-bolt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Right Side: Animated Feature Journey -->
+                <div class="hero-visual-wrapper hero-visual-anim" id="hero-visual-anim">
+
+                    <!-- Particle + connection canvas (drawn by JS) -->
+                    <canvas class="hero-canvas" id="hero-canvas"></canvas>
+
+                    <!-- Mouse glow layer -->
+                    <div class="hero-mouse-glow" id="hero-mouse-glow"></div>
+
+                    <!-- 2x3 floating feature cards -->
+                    <div class="hero-feat-grid" id="hero-feat-grid">
+
+                        <div class="hfc" data-idx="0" data-float-dur="4.2" data-float-delay="0">
+                            <div class="hfc-icon" style="--hfc-color: #a78bfa;"><i class="fa-solid fa-file-invoice"></i></div>
+                            <div class="hfc-label">ATS Resume Analyzer</div>
+                            <div class="hfc-step-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="hfc" data-idx="1" data-float-dur="5.1" data-float-delay="0.8">
+                            <div class="hfc-icon" style="--hfc-color: #22d3ee;"><i class="fa-solid fa-sliders"></i></div>
+                            <div class="hfc-label">Skill Gap Analyzer</div>
+                            <div class="hfc-step-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="hfc" data-idx="2" data-float-dur="4.7" data-float-delay="1.4">
+                            <div class="hfc-icon" style="--hfc-color: #f472b6;"><i class="fa-solid fa-map-signs"></i></div>
+                            <div class="hfc-label">Career Roadmap</div>
+                            <div class="hfc-step-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="hfc" data-idx="3" data-float-dur="5.6" data-float-delay="0.4">
+                            <div class="hfc-icon" style="--hfc-color: #34d399;"><i class="fa-solid fa-comments"></i></div>
+                            <div class="hfc-label">Mock Interviews</div>
+                            <div class="hfc-step-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="hfc" data-idx="4" data-float-dur="4.4" data-float-delay="1.1">
+                            <div class="hfc-icon" style="--hfc-color: #fbbf24;"><i class="fa-solid fa-building"></i></div>
+                            <div class="hfc-label">Company Preparation</div>
+                            <div class="hfc-step-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="hfc" data-idx="5" data-float-dur="5.3" data-float-delay="1.7">
+                            <div class="hfc-icon" style="--hfc-color: #818cf8;"><i class="fa-solid fa-table-list"></i></div>
+                            <div class="hfc-label">Placement Tracker</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TOP COMPANIES MARQUEE SLIDER -->
+        <section class="companies-section" id="companies">
+            <div class="companies-header">
+                Top recruiters hiring candidates trained on our platform
+            </div>
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                    <div class="company-logo-pill"><i class="fa-brands fa-google"></i> Google</div>
+                    <div class="company-logo-pill"><i class="fa-brands fa-microsoft"></i> Microsoft</div>
+                    <div class="company-logo-pill"><i class="fa-brands fa-amazon"></i> Amazon</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-cube"></i> Adobe</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-terminal"></i> Atlassian</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-building-user"></i> Zoho</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-network-wired"></i> Infosys</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-code"></i> TCS</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-chart-diagram"></i> Accenture</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-landmark"></i> Deloitte</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-briefcase"></i> EY</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-server"></i> IBM</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-microchip"></i> Intel</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-database"></i> Oracle</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-globe"></i> Capgemini</div>
+
+                    <!-- Duplicated set for seamless loop -->
+                    <div class="company-logo-pill"><i class="fa-brands fa-google"></i> Google</div>
+                    <div class="company-logo-pill"><i class="fa-brands fa-microsoft"></i> Microsoft</div>
+                    <div class="company-logo-pill"><i class="fa-brands fa-amazon"></i> Amazon</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-cube"></i> Adobe</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-terminal"></i> Atlassian</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-building-user"></i> Zoho</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-network-wired"></i> Infosys</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-code"></i> TCS</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-chart-diagram"></i> Accenture</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-landmark"></i> Deloitte</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-briefcase"></i> EY</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-server"></i> IBM</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-microchip"></i> Intel</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-database"></i> Oracle</div>
+                    <div class="company-logo-pill"><i class="fa-solid fa-globe"></i> Capgemini</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FEATURES BENTO GRID SECTION -->
+        <section class="features-section" id="features">
+            <div class="landing-container">
+                <div style="text-align: center;">
+                    <div class="section-badge"><i class="fa-solid fa-cubes"></i> Comprehensive AI Suite</div>
+                    <h2 class="section-title">
+                        Supercharge Every Stage of Your <span class="text-gradient">Career Path</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Built for ambitious students and job seekers seeking automated ATS optimization, custom roadmaps, and realistic mock interviews.
+                    </p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Bento Card 1: Resume Analyzer -->
+                    <div class="bento-card bento-col-8">
+                        <div>
+                            <div class="bento-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                            <h3 class="bento-title">ATS Resume Analyzer & Parser</h3>
+                            <p class="bento-desc">Upload your PDF or DOCX resume for immediate AI scanning. Parse skills, experience, format deficiencies, and get tailored line-by-line recommendations.</p>
+                        </div>
+                        <div class="bento-widget">
+                            <div class="ats-scanner-demo">
+                                <div>
+                                    <div style="font-weight: 700; color: #FFF; font-size: 0.9rem;">ATS Format Evaluation</div>
+                                    <div style="font-size: 0.8rem; color: #9CA3AF;">Parsed 42 key skills • Action verbs matched</div>
+                                </div>
+                                <div class="ats-ring"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 2: Skill Gap Analyzer -->
+                    <div class="bento-card bento-col-4">
+                        <div>
+                            <div class="bento-icon" style="color: var(--cyan); border-color: rgba(34, 211, 238, 0.3); background: rgba(34, 211, 238, 0.1);"><i class="fa-solid fa-sliders"></i></div>
+                            <h3 class="bento-title">Skill Gap Analyzer</h3>
+                            <p class="bento-desc">Compare your current profile against 90+ industry roles to uncover critical missing technical skills.</p>
+                        </div>
+                        <div class="bento-widget">
+                            <div class="skill-tags-demo">
+                                <span class="skill-tag-matched"><i class="fa-solid fa-check"></i> Python</span>
+                                <span class="skill-tag-matched"><i class="fa-solid fa-check"></i> Node.js</span>
+                                <span class="skill-tag-missing"><i class="fa-solid fa-triangle-exclamation"></i> Docker</span>
+                                <span class="skill-tag-missing"><i class="fa-solid fa-triangle-exclamation"></i> Kafka</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 3: Career Roadmap -->
+                    <div class="bento-card bento-col-4">
+                        <div>
+                            <div class="bento-icon" style="color: var(--pink); border-color: rgba(236, 72, 153, 0.3); background: rgba(236, 72, 153, 0.1);"><i class="fa-solid fa-map-signs"></i></div>
+                            <h3 class="bento-title">6-Week Career Roadmap</h3>
+                            <p class="bento-desc">Structured weekly learning goals, project milestones, and curated resources for your target role.</p>
+                        </div>
+                        <div class="bento-widget">
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <div style="font-size: 0.8rem; color: #FFF; font-weight: 600;">Week 3: System Architecture & Microservices</div>
+                                <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;">
+                                    <div style="width: 75%; height: 100%; background: var(--gradient-pink-purple); border-radius: 3px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 4: Mock Interview Prep -->
+                    <div class="bento-card bento-col-8">
+                        <div>
+                            <div class="bento-icon" style="color: var(--green); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-comments"></i></div>
+                            <h3 class="bento-title">AI Mock Interview Simulator</h3>
+                            <p class="bento-desc">Practice technical interviews with adaptive AI. Evaluate response depth, filler words, speech clarity, and receive actionable scorecards.</p>
+                        </div>
+                        <div class="bento-widget" style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span style="font-size: 0.78rem; background: rgba(16,185,129,0.2); color: #6EE7B7; padding: 4px 8px; border-radius: 4px; font-weight: 700;">AI FEEDBACK READY</span>
+                                <div style="font-size: 0.88rem; color: #FFF; font-weight: 600; margin-top: 6px;">Technical Depth Score: 88/100</div>
+                            </div>
+                            <div style="font-size: 1.5rem; color: var(--green);"><i class="fa-solid fa-microphone-lines"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 5: Company Prep -->
+                    <div class="bento-card bento-col-6">
+                        <div>
+                            <div class="bento-icon"><i class="fa-solid fa-building"></i></div>
+                            <h3 class="bento-title">Company-Specific Preparation</h3>
+                            <p class="bento-desc">In-depth hiring guides for 250+ top companies including round patterns, salary insights, and frequently asked coding questions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 6: Placement Tracker -->
+                    <div class="bento-card bento-col-6">
+                        <div>
+                            <div class="bento-icon" style="color: var(--cyan);"><i class="fa-solid fa-table-list"></i></div>
+                            <h3 class="bento-title">Placement Tracker</h3>
+                            <p class="bento-desc">Kanban tracking for all your job applications, online assessments, interview schedules, and job offers in one organized hub.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 7: AI Job Recommendations -->
+                    <div class="bento-card bento-col-6">
+                        <div>
+                            <div class="bento-icon" style="color: var(--amber);"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                            <h3 class="bento-title">Smart Job Recommendations</h3>
+                            <p class="bento-desc">Discover active job openings matched directly to your current skill score and career trajectory with real-time match percentages.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Card 8: Progress Analytics -->
+                    <div class="bento-card bento-col-6">
+                        <div>
+                            <div class="bento-icon" style="color: var(--pink);"><i class="fa-solid fa-chart-line"></i></div>
+                            <h3 class="bento-title">Real-Time Progress Analytics</h3>
+                            <p class="bento-desc">Monitor your weekly growth trajectory, interview readiness indices, and percentile rank compared to peer candidates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. HOW IT WORKS 4-STEP TIMELINE -->
+        <section class="how-it-works-section" id="how-it-works">
+            <div class="landing-container">
+                <div style="text-align: center;">
+                    <div class="section-badge"><i class="fa-solid fa-timeline"></i> Streamlined Workflow</div>
+                    <h2 class="section-title">
+                        4 Simple Steps to <span class="text-gradient-purple-pink">Get Placed</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        From your first resume upload to locking in your dream job offer—here is how AI Career Coach guides your journey.
+                    </p>
+                </div>
+
+                <div class="timeline-grid">
+                    <div class="timeline-step-card">
+                        <div class="step-num-bubble">1</div>
+                        <h4 class="step-title">Create Account</h4>
+                        <p class="step-desc">Sign up with your student email, college name, and target engineering branch in under 30 seconds.</p>
+                    </div>
+
+                    <div class="timeline-step-card">
+                        <div class="step-num-bubble">2</div>
+                        <h4 class="step-title">Upload Resume</h4>
+                        <p class="step-desc">Upload your latest PDF/DOCX resume for instant automated ATS parsing and formatting review.</p>
+                    </div>
+
+                    <div class="timeline-step-card">
+                        <div class="step-num-bubble">3</div>
+                        <h4 class="step-title">AI Analysis</h4>
+                        <p class="step-desc">Receive tailored skill gap reports, customized weekly roadmaps, and practice AI mock interviews.</p>
+                    </div>
+
+                    <div class="timeline-step-card">
+                        <div class="step-num-bubble">4</div>
+                        <h4 class="step-title">Get Hired</h4>
+                        <p class="step-desc">Apply to high-match job opportunities, ace technical rounds with company insights, and land top offers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. WHY CHOOSE US -->
+        <section class="why-us-section" id="why-us">
+            <div class="landing-container">
+                <div style="text-align: center;">
+                    <div class="section-badge"><i class="fa-solid fa-shield-halved"></i> Unrivaled Advantage</div>
+                    <h2 class="section-title">
+                        Why Top Candidates <span class="text-gradient">Choose Us</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Our platform is engineered specifically for campus placement success and tech career advancement.
+                    </p>
+                </div>
+
+                <div class="why-grid">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+                        <h4 class="why-title">ATS Resume Optimization</h4>
+                        <p class="why-desc">Ensure your resume passes ATS screeners at tech giants with AI-guided keyword matching and format verification.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <h4 class="why-title">Personalized Career Roadmap</h4>
+                        <p class="why-desc">Never wonder what to learn next. Get a step-by-step roadmap customized to your target software role.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-robot"></i></div>
+                        <h4 class="why-title">Mock Interview Practice</h4>
+                        <p class="why-desc">Overcome interview anxiety with realistic AI speech and technical questioning scenarios.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                        <h4 class="why-title">Placement Readiness Index</h4>
+                        <p class="why-desc">Quantify your overall readiness score so you know exactly when you are ready to crack top company interviews.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h4 class="why-title">AI Job Recommendations</h4>
+                        <p class="why-desc">Receive real-time match ratings for openings at Google, Amazon, TCS, Microsoft, and promising startups.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h4 class="why-title">Interactive Dashboard</h4>
+                        <p class="why-desc">Track all your preparation metrics, application statuses, and interview schedules in one central dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats section removed — no fake numbers -->
+
+        <!-- 8. SCREENSHOTS / PRODUCT SHOWCASE -->
+        <section class="showcase-section" id="showcase">
+            <div class="landing-container">
+                <div style="text-align: center;">
+                    <div class="section-badge"><i class="fa-solid fa-laptop-code"></i> Live Interface Showcase</div>
+                    <h2 class="section-title">
+                        Experience the <span class="text-gradient-cyan-blue">Next-Gen Portal</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Explore our clean, dark-mode glassmorphic dashboard built for optimal focus and rapid career growth.
+                    </p>
+                </div>
+
+                <div class="showcase-tabs-nav">
+                    <button type="button" class="showcase-tab-btn active" data-showcase="dashboard">Dashboard</button>
+                    <button type="button" class="showcase-tab-btn" data-showcase="resume">Resume Analyzer</button>
+                    <button type="button" class="showcase-tab-btn" data-showcase="skill">Skill Gap</button>
+                    <button type="button" class="showcase-tab-btn" data-showcase="interview">Mock Interview</button>
+                    <button type="button" class="showcase-tab-btn" data-showcase="roadmap">Roadmap</button>
+                    <button type="button" class="showcase-tab-btn" data-showcase="company">Company Prep</button>
+                </div>
+
+                <!-- MacBook Mockup Container -->
+                <div class="macbook-mockup-frame">
+                    <div class="macbook-screen">
+                        <!-- Dashboard Showcase -->
+                        <div class="showcase-panel active" id="showcase-dashboard">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <h3 style="color: #FFF; margin: 0;">Student Overview Hub</h3>
+                                <span style="background: rgba(139,92,246,0.2); color: var(--purple-light); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">PRO TIER ACTIVE</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px;">
+                                <div style="background: rgba(255,255,255,0.04); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                    <div style="font-size: 0.8rem; color: #9CA3AF;">ATS Score</div>
+                                    <div style="font-size: 1.5rem; font-weight: 800; color: #FFF;">92 / 100</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.04); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                    <div style="font-size: 0.8rem; color: #9CA3AF;">Role Readiness</div>
+                                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--cyan);">87% Ready</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.04); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                                    <div style="font-size: 0.8rem; color: #9CA3AF;">Target Offers</div>
+                                    <div style="font-size: 1.5rem; font-weight: 800; color: var(--pink);">4 Applications</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resume Showcase -->
+                        <div class="showcase-panel" id="showcase-resume">
+                            <h3 style="color: #FFF; margin-top: 0;">ATS Resume Scanner & Formatting Review</h3>
+                            <p style="color: #9CA3AF;">Detailed breakdown of candidate keywords, layout compatibility, and section recommendations.</p>
+                        </div>
+
+                        <!-- Skill Gap Showcase -->
+                        <div class="showcase-panel" id="showcase-skill">
+                            <h3 style="color: #FFF; margin-top: 0;">Skill Gap Deficiencies</h3>
+                            <p style="color: #9CA3AF;">Automatic comparison across 90+ roles with links to recommended tutorials.</p>
+                        </div>
+
+                        <!-- Mock Interview Showcase -->
+                        <div class="showcase-panel" id="showcase-interview">
+                            <h3 style="color: #FFF; margin-top: 0;">Interactive AI Interview Simulator</h3>
+                            <p style="color: #9CA3AF;">Voice & text interview practice with instant AI feedback on technical accuracy.</p>
+                        </div>
+
+                        <!-- Roadmap Showcase -->
+                        <div class="showcase-panel" id="showcase-roadmap">
+                            <h3 style="color: #FFF; margin-top: 0;">6-Week Customized Learning Path</h3>
+                            <p style="color: #9CA3AF;">Weekly goals and project milestones tailored for high-growth engineering jobs.</p>
+                        </div>
+
+                        <!-- Company Prep Showcase -->
+                        <div class="showcase-panel" id="showcase-company">
+                            <h3 style="color: #FFF; margin-top: 0;">Company Hiring Process Guides</h3>
+                            <p style="color: #9CA3AF;">Recruiter tips, salary expectations, and top interview questions for tech leaders.</p>
+                        </div>
+                    </div>
+                    <div class="macbook-base"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials & Pricing sections removed -->
+
+        <!-- 9. COMING SOON SECTION -->
+        <!-- 9. COMING SOON ROADMAP SECTION -->
+        <section class="coming-soon-section" id="coming-soon">
+            <div class="landing-container">
+                <div style="text-align: center;">
+                    <div class="section-badge"><i class="fa-solid fa-rocket"></i> Coming Soon</div>
+                    <h2 class="section-title">
+                        More Powerful AI Features <span class="text-gradient">Are Coming</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        We're building the next generation of AI-powered placement tools. Stay tuned for upcoming releases.
+                    </p>
+                </div>
+
+                <div class="coming-soon-grid">
+
+                    <!-- Card 1 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <div class="cs-icon" style="color: var(--purple-light);"><i class="fa-solid fa-robot"></i></div>
+                            <span class="cs-badge"><i class="fa-solid fa-clock"></i> Coming Soon</span>
+                        </div>
+                        <h3 class="cs-title">🤖 AI Resume Builder</h3>
+                        <p class="cs-desc">Automatically create ATS-friendly resumes tailored to your dream job.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <div class="cs-icon" style="color: var(--cyan);"><i class="fa-solid fa-laptop-code"></i></div>
+                            <span class="cs-badge"><i class="fa-solid fa-clock"></i> Coming Soon</span>
+                        </div>
+                        <h3 class="cs-title">💻 AI Coding Interview</h3>
+                        <p class="cs-desc">Practice real coding interviews with AI-generated questions and live feedback.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <div class="cs-icon" style="color: var(--pink);"><i class="fa-solid fa-bullseye"></i></div>
+                            <span class="cs-badge"><i class="fa-solid fa-clock"></i> Coming Soon</span>
+                        </div>
+                        <h3 class="cs-title">🎯 AI Career Mentor</h3>
+                        <p class="cs-desc">Receive personalized career guidance, skill recommendations and placement strategies.</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <div class="cs-icon" style="color: var(--amber);"><i class="fa-solid fa-chart-line"></i></div>
+                            <span class="cs-badge"><i class="fa-solid fa-clock"></i> Coming Soon</span>
+                        </div>
+                        <h3 class="cs-title">📈 Placement Analytics</h3>
+                        <p class="cs-desc">Track your interview performance, application progress and placement readiness.</p>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <div class="cs-icon" style="color: var(--green);"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                            <span class="cs-badge"><i class="fa-solid fa-clock"></i> Coming Soon</span>
+                        </div>
+                        <h3 class="cs-title">📱 Mobile App</h3>
+                        <p class="cs-desc">Access your learning roadmap, mock interviews and progress anywhere.</p>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <div class="cs-icon" style="color: var(--cyan);"><i class="fa-solid fa-people-group"></i></div>
+                            <span class="cs-badge"><i class="fa-solid fa-clock"></i> Coming Soon</span>
+                        </div>
+                        <h3 class="cs-title">🤝 Team Collaboration</h3>
+                        <p class="cs-desc">Study with friends, share interview experiences and prepare together.</p>
+                    </div>
+
+                </div>
+
+                <!-- Bottom CTA Box -->
+                <div class="coming-soon-cta">
+                    <div class="cs-cta-content">
+                        <h3>Be the First to Experience These Features</h3>
+                        <p>We're actively developing new AI tools to help students prepare smarter and get placed faster.</p>
+                    </div>
+                    <button type="button" class="btn-hero-primary btn-open-register">
+                        Notify Me When Available <i class="fa-solid fa-bell"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. FAQ ACCORDION -->
+        <section class="faq-section" id="faq">
+            <div class="landing-container">
+                <div style="text-align: center;">
+                    <div class="section-badge"><i class="fa-solid fa-circle-question"></i> Help & FAQs</div>
+                    <h2 class="section-title">
+                        Frequently Asked <span class="text-gradient">Questions</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Everything you need to know about our AI Career Coach platform.
+                    </p>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <span>How does the ATS Resume Analyzer evaluate my resume?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Our engine scans your PDF or DOCX file using automated text extraction, parsing technical skills, work experience keywords, section headings, and layout formatting. It compares these attributes against actual job description screeners used by tech recruiters.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do the AI Mock Interviews work?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            The mock interview simulator prompts candidate questions based on your chosen target role. You can respond via voice audio or text typing. The AI analyzes technical correctness, speech pace, and filler words, providing an instant score and feedback report.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How are the 6-Week Career Roadmaps generated?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Based on your identified skill gaps, our platform constructs a 6-week curriculum with weekly milestones, practice projects, and curated learning links specific to software engineering, data science, or full-stack roles.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is AI Career Coach suitable for campus placements?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! AI Career Coach is specifically designed for college students preparing for campus recruitment drives, off-campus placements, and tech internships.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I start for free without a credit card?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, our Free Starter plan is 100% free with no credit card required. You can test your ATS resume score and explore company preparation guides immediately.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. FOOTER -->
+        <footer class="landing-footer">
+            <div class="landing-container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="#hero" class="brand-logo">
+                            <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <span class="logo-text">AI Career <span>Coach</span></span>
+                        </a>
+                        <p>Your intelligent, autonomous career acceleration platform for acing technical interviews, ATS screening, and campus placement drives.</p>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Platform</h4>
+                        <ul class="footer-links">
+                            <li><a href="#features">Resume Analyzer</a></li>
+                            <li><a href="#features">Skill Gap Analysis</a></li>
+                            <li><a href="#features">Mock Interviews</a></li>
+                            <li><a href="#features">Career Roadmaps</a></li>
+                            <li><a href="#features">Company Guides</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Resources</h4>
+                        <ul class="footer-links">
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#companies">Top Companies</a></li>
+                            <li><a href="#coming-soon">Coming Soon</a></li>
+                            <li><a href="#faq">FAQs</a></li>
+                            <li><a href="#" class="btn-open-login">Sign In</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <ul class="footer-links">
+                            <li><a href="mailto:support@aicareercoach.com"><i class="fa-solid fa-envelope"></i> Support Email</a></li>
+                            <li><a href="https://github.com" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Repository</a></li>
+                            <li><a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn Network</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div>© 2026 AI Career Coach Inc. All rights reserved.</div>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Interactive Demo Modal -->
+    <div class="demo-modal-backdrop" id="demo-modal">
+        <div class="demo-modal-content">
+            <div class="demo-modal-header">
+                <h3><i class="fa-solid fa-sparkles" style="color: var(--cyan);"></i> AI Career Coach Interactive Demo</h3>
+                <button type="button" class="btn-close-modal" id="btn-close-demo-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="demo-modal-body">
+                <div class="demo-video-placeholder">
+                    <div class="demo-play-btn" onclick="alert('Interactive Platform Demo Walkthrough Activated!')"><i class="fa-solid fa-play"></i></div>
+                    <p style="color: #9CA3AF; margin-top: 16px; font-size: 0.95rem;">Click play to launch interactive walkthrough of Resume Parser & Mock Interview Simulator.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 1: USER REGISTRATION & OTC LOGIN OVERLAY -->
+    <div id="auth-overlay" class="auth-overlay-backdrop">
+
+        <!-- LEFT SIDE (40%): AUTHENTICATION PANEL -->
+        <div class="auth-card">
+            <button type="button" class="auth-close-btn" id="btn-close-auth" onclick="closeAuthModal()" title="Close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="auth-brand">
+                <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <span class="logo-text">AI Career <span>Coach</span></span>
+            </div>
+            <p class="auth-tagline">Welcome back! Sign in to access your AI Career Assistant.</p>
+
+            <!-- Registration Form View -->
+            <div id="auth-register-view">
+                <h3>Create Student Account</h3>
+                <form id="form-register">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user"></i> Full Name</label>
+                        <input type="text" id="reg-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+                        <input type="email" id="reg-email" placeholder="john.doe@email.co" required>
+                    </div>
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-lock"></i> Account Password</label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="reg-password" placeholder="••••••••" required minlength="6">
+                                <button type="button" class="toggle-password-btn" data-target="reg-password" title="Toggle password visibility">
+                                    <i class="fa-regular fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-shield-halved"></i> Confirm Password</label>
+                            <div class="password-input-wrapper">
+                                <input type="password" id="reg-confirm-password" placeholder="••••••••" required minlength="6">
+                                <button type="button" class="toggle-password-btn" data-target="reg-confirm-password" title="Toggle password visibility">
+                                    <i class="fa-regular fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <!-- Searchable Autocomplete College / University Combobox Field -->
+                        <div class="form-group" style="position: relative;">
+                            <label><i class="fa-solid fa-university"></i> College / University</label>
+                            <input type="text" id="reg-college" placeholder="Type or search college (e.g. PSG, Anna, Loyola)..." autocomplete="off" required>
+                            
+                            <!-- Searchable Dropdown Panel -->
+                            <div class="college-autocomplete-dropdown hidden" id="college-autocomplete-box">
+                                <div class="college-filters-row" id="college-filters-row">
+                                    <button type="button" class="college-filter-pill active" data-filter="all">All</button>
+                                    <button type="button" class="college-filter-pill" data-filter="Engineering">Engineering</button>
+                                    <button type="button" class="college-filter-pill" data-filter="Arts & Science">Arts & Science</button>
+                                    <button type="button" class="college-filter-pill" data-filter="Government">Government</button>
+                                    <button type="button" class="college-filter-pill" data-filter="Autonomous">Autonomous</button>
+                                    <button type="button" class="college-filter-pill" data-filter="Deemed University">Deemed / Central</button>
+                                </div>
+                                <div class="college-results-list" id="college-results-list">
+                                    <!-- Results nodes populated dynamically via JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-network-wired"></i> Branch / Major</label>
+                            <input type="text" id="reg-branch" placeholder="Computer Science">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full-width" id="btn-register-submit">
+                        <i class="fa-solid fa-user-plus"></i> Create Account
+                    </button>
+                </form>
+                <div class="auth-divider"><span>OR</span></div>
+                <button type="button" class="btn btn-google btn-full-width btn-google-signup">
+                    <svg class="google-icon" viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+                <p class="auth-switch">Already have an account? <a href="#" id="link-to-login">Sign In here</a></p>
+            </div>
+
+            <!-- Login View -->
+            <div id="auth-login-view" class="hidden">
+                <h3>Sign In to Account</h3>
+                <form id="form-login">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+                        <input type="email" id="login-email" placeholder="john.doe@email.co" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-lock"></i> Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                            <button type="button" class="toggle-password-btn" data-target="login-password" title="Toggle password visibility">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: -4px; margin-bottom: 20px;">
+                        <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #9CA3AF; cursor: pointer;">
+                            <input type="checkbox" id="login-remember-me" style="accent-color: var(--purple); cursor: pointer;"> Remember Me
+                        </label>
+                        <a href="#" id="link-to-forgot" class="auth-sublink">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width" id="btn-login-submit">
+                        <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                    </button>
+                </form>
+                <div class="auth-divider"><span>OR</span></div>
+                <button type="button" class="btn btn-google btn-full-width btn-google-login">
+                    <svg class="google-icon" viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+                <p class="auth-switch">Don't have an account? <a href="#" id="link-to-register">Create Account</a></p>
+            </div>
+
+            <!-- Forgot Password View -->
+            <div id="auth-forgot-password-view" class="hidden">
+                <h3>Forgot Password</h3>
+                <p class="verification-subtitle">Enter your registered email address to receive password reset instructions.</p>
+                <form id="form-forgot-password">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+                        <input type="email" id="forgot-email" placeholder="john.doe@email.co" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">
+                        <i class="fa-solid fa-paper-plane"></i> Send Reset Link
+                    </button>
+                </form>
+                <button type="button" class="btn btn-secondary btn-full-width" style="margin-top: 10px;" id="btn-back-from-forgot">
+                    Back to Sign In
+                </button>
+            </div>
+
+            <!-- Reset Password View -->
+            <div id="auth-reset-password-view" class="hidden">
+                <h3>Set New Password</h3>
+                <p class="verification-subtitle">Enter a new secure password for your account.</p>
+                <form id="form-reset-password">
+                    <input type="hidden" id="reset-token-input">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-lock"></i> New Password</label>
+                        <input type="password" id="reset-new-password" placeholder="••••••••" required minlength="6">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">
+                        <i class="fa-solid fa-key"></i> Update Password & Sign In
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE (60%): Cursor/Linear Career Journey Animation -->
+        <div class="auth-right-showcase" id="auth-right-showcase">
+
+            <!-- Background layers -->
+            <div class="rp-bg-grid"></div>
+            <div class="rp-bg-glow rp-glow-purple"></div>
+            <div class="rp-bg-glow rp-glow-cyan"></div>
+            <canvas class="rp-particles-canvas" id="rp-particles-canvas"></canvas>
+            <div class="rp-mouse-glow" id="rp-mouse-glow"></div>
+
+            <!-- Career Journey Animation Centerpiece -->
+            <div class="rp-stage" id="rp-stage">
+
+                <!-- STEP 1: Resume -->
+                <div class="rp-scene" id="rp-scene-resume" data-scene="resume">
+                    <div class="rp-resume-card">
+                        <div class="rp-resume-header">
+                            <div class="rp-avatar-circle"></div>
+                            <div class="rp-header-lines">
+                                <div class="rp-line rp-line-name"></div>
+                                <div class="rp-line rp-line-role"></div>
+                            </div>
+                        </div>
+                        <div class="rp-resume-body">
+                            <div class="rp-section-label"></div>
+                            <div class="rp-line rp-line-long"></div>
+                            <div class="rp-line rp-line-medium"></div>
+                            <div class="rp-line rp-line-short"></div>
+                            <div class="rp-section-label rp-mt"></div>
+                            <div class="rp-line rp-line-long"></div>
+                            <div class="rp-line rp-line-medium"></div>
+                        </div>
+                        <!-- AI Scan Line -->
+                        <div class="rp-scan-line" id="rp-scan-line"></div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Skills -->
+                <div class="rp-scene rp-scene-hidden" id="rp-scene-skills" data-scene="skills">
+                    <div class="rp-skills-grid">
+                        <div class="rp-chip" data-delay="0">Python</div>
+                        <div class="rp-chip" data-delay="80">Machine Learning</div>
+                        <div class="rp-chip" data-delay="160">SQL</div>
+                        <div class="rp-chip" data-delay="240">React</div>
+                        <div class="rp-chip" data-delay="320">Communication</div>
+                        <div class="rp-chip" data-delay="400">Problem Solving</div>
+                    </div>
+                    <div class="rp-neural-svg">
+                        <svg viewBox="0 0 260 100" xmlns="http://www.w3.org/2000/svg">
+                            <path class="rp-neural-path" d="M30 50 Q 90 10 130 50 Q 170 90 230 50" />
+                            <path class="rp-neural-path" d="M30 50 Q 130 80 230 50" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Interview -->
+                <div class="rp-scene rp-scene-hidden" id="rp-scene-interview" data-scene="interview">
+                    <div class="rp-interview-panel">
+                        <div class="rp-mic-icon">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                        <div class="rp-question-card">
+                            <div class="rp-line rp-line-long"></div>
+                            <div class="rp-line rp-line-medium"></div>
+                        </div>
+                        <div class="rp-pulse-rings">
+                            <div class="rp-pulse-ring"></div>
+                            <div class="rp-pulse-ring rp-ring-2"></div>
+                            <div class="rp-pulse-ring rp-ring-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Offer Letter -->
+                <div class="rp-scene rp-scene-hidden" id="rp-scene-offer" data-scene="offer">
+                    <div class="rp-offer-card">
+                        <div class="rp-offer-top">
+                            <div class="rp-offer-badge">✦ Offer Letter</div>
+                        </div>
+                        <div class="rp-offer-body">
+                            <div class="rp-line rp-line-medium rp-offer-line"></div>
+                            <div class="rp-line rp-line-long rp-offer-line"></div>
+                            <div class="rp-line rp-line-short rp-offer-line"></div>
+                        </div>
+                        <div class="rp-offer-seal">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="rp-success-glow"></div>
+                        <div class="rp-confetti-layer" id="rp-confetti-layer"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Step Indicator (Progress) -->
+            <div class="rp-step-indicator">
+                <div class="rp-step-dot rp-dot-active" data-step="0"></div>
+                <div class="rp-step-line"></div>
+                <div class="rp-step-dot" data-step="1"></div>
+                <div class="rp-step-line"></div>
+                <div class="rp-step-dot" data-step="2"></div>
+                <div class="rp-step-line"></div>
+                <div class="rp-step-dot" data-step="3"></div>
+            </div>
+
+            <!-- Step label -->
+            <div class="rp-step-label" id="rp-step-label">Resume</div>
+
+            <!-- Bottom Caption -->
+            <div class="rp-caption">
+                <p class="rp-caption-title">AI Career Coach</p>
+                <p class="rp-caption-sub">Your AI Career Companion</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Main Application Body Shell -->
+    <div class="app-container app-locked hidden" id="main-application-shell">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span class="logo-text">AI Career <span>Coach</span></span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-tab="dashboard">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="resume-parser">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Resume Analyzer</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="skill-analyzer">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Skill Gap Analyzer</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="roadmap">
+                    <i class="fa-solid fa-map-signs"></i>
+                    <span>Learning Roadmap</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="interview">
+                    <i class="fa-solid fa-comments"></i>
+                    <span>Mock Interview</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="recommendations">
+                    <i class="fa-solid fa-building"></i>
+                    <span>Company Prep & Jobs</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="placement-tracker">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <span>Placement Tracker</span>
+                </a>
+            </nav>
+
+            <div class="user-profile-card cursor-pointer" id="sidebar-user-profile-card" data-tab="profile">
+                <div class="user-avatar">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <div class="user-info">
+                    <h4 class="user-name" id="sidebar-user-name">Guest Candidate</h4>
+                    <p class="user-status"><span class="pulse-dot"></span> Online</p>
+                </div>
+                <button type="button" class="icon-btn text-muted" id="btn-sidebar-logout" title="Sign Out of Account" style="margin-left: auto; background: transparent; border: none; font-size: 1.1rem; color: var(--text-muted);">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Container -->
+        <main class="main-content">
+
+            <!-- Top Navigation bar -->
+            <header class="top-nav">
+                <div class="welcome-text">
+                    <h1 id="page-title">Career Hub</h1>
+                    <p id="page-subtitle">Track your prep, close skill gaps, and master interviews.</p>
+                </div>
+
+                <div class="top-action-bar">
+                    <!-- Daily Practice Flashcard Pill -->
+                    <div class="practice-flashcard-link stat-pill cursor-pointer" id="btn-open-practice" title="View Daily Prep Drill">
+                        <i class="fa-solid fa-fire text-pink"></i>
+                        <span class="pill-label">Daily Flashcards</span>
+                    </div>
+
+                    <!-- Interactive Notification Bell & Dropdown Wrapper -->
+                    <div class="notification-bell-wrapper" style="position: relative;">
+                        <div class="notification-bell cursor-pointer" id="btn-notification-bell" title="Notifications">
+                            <i class="fa-regular fa-bell" id="bell-icon"></i>
+                            <span class="badge" id="notification-unread-count">3</span>
+                        </div>
+                        <div class="notification-dropdown glass-card hidden" id="notification-dropdown">
+                            <div class="notification-dropdown-header">
+                                <h4><i class="fa-solid fa-bell text-purple"></i> Notifications</h4>
+                                <div class="notification-header-actions">
+                                    <button type="button" class="btn-text-small" id="btn-mark-all-read">Mark all read</button>
+                                    <button type="button" class="btn-text-small text-danger" id="btn-clear-notifications">Clear</button>
+                                </div>
+                            </div>
+                            <div class="notification-list" id="notification-list-container">
+                                <!-- Dynamically populated notifications -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Target Role Dropdown Selector across 90+ roles -->
+                    <div class="stat-pill">
+                        <span class="pill-label"><i class="fa-solid fa-briefcase text-teal"></i> Desired Role:</span>
+                        <select id="global-target-role" class="pill-select">
+                            <!-- Populated dynamically via JS -->
+                        </select>
+                    </div>
+                </div>
+            </header>
+
+            <!-- TAB 1: DASHBOARD OVERVIEW -->
+            <section id="tab-dashboard" class="tab-panel active">
+                <div class="dashboard-stats-grid">
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon purple-glow"><i class="fa-solid fa-bullseye"></i></div>
+                        <div class="stat-content">
+                            <h3>Resume ATS Score</h3>
+                            <p class="stat-value" id="dash-ats-score">--/100</p>
+                            <span class="stat-trend text-muted" id="dash-ats-note">Upload resume to calculate</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon teal-glow"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="stat-content">
+                            <h3>Skills Mastered</h3>
+                            <p class="stat-value" id="dash-skills-mastered-count">0 / 0</p>
+                            <span class="stat-trend text-muted" id="dash-skills-gap-note">Skill gaps remaining</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon amber-glow"><i class="fa-solid fa-route"></i></div>
+                        <div class="stat-content">
+                            <h3>Roadmap Coverage</h3>
+                            <p class="stat-value" id="dash-roadmap-progress">0%</p>
+                            <span class="stat-trend text-muted" id="dash-roadmap-note">0 Completed / 6 Weeks</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon pink-glow"><i class="fa-solid fa-gauge-high"></i></div>
+                        <div class="stat-content">
+                            <h3>Interview Readiness</h3>
+                            <p class="stat-value" id="dash-interview-readiness">N/A</p>
+                            <span class="stat-trend text-muted" id="dash-readiness-note">Average Interview Grade</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-stats-grid" style="margin-top: 20px;">
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon teal-glow"><i class="fa-solid fa-bullseye"></i></div>
+                        <div class="stat-content">
+                            <h3>Career Readiness</h3>
+                            <p class="stat-value" id="dash-career-readiness">65%</p>
+                            <span class="stat-trend text-teal">Overall placement fit</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon purple-glow"><i class="fa-solid fa-calendar-day"></i></div>
+                        <div class="stat-content">
+                            <h3>Daily & Weekly Goals</h3>
+                            <p class="stat-value" id="dash-goals-status">2 / 3 Tasks</p>
+                            <span class="stat-trend text-muted">Weekly study streak active</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon amber-glow"><i class="fa-solid fa-tasks"></i></div>
+                        <div class="stat-content">
+                            <h3>Upcoming Tasks</h3>
+                            <p class="stat-value" id="dash-upcoming-tasks-count">3 Pending</p>
+                            <span class="stat-trend text-amber">Review Skill Gap list</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon pink-glow"><i class="fa-solid fa-book-open"></i></div>
+                        <div class="stat-content">
+                            <h3>Recommended Courses</h3>
+                            <p class="stat-value" id="dash-courses-count">4 Available</p>
+                            <span class="stat-trend text-muted">Mapped to target role</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-split-layout" style="margin-top: 20px;">
+                    <div class="glass-card dash-main-panel">
+                        <div class="panel-header">
+                            <h2><i class="fa-solid fa-bolt text-gradient"></i> AI Career Coaching Advisor</h2>
+                            <span class="badge badge-accent">Live Advisory</span>
+                        </div>
+
+                        <div class="advisor-welcome-screen" id="advisor-empty-state">
+                            <img class="advisor-illustration"
+                                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150' fill='none'><path d='M100 20 C130 20 150 40 150 70 C150 100 130 120 100 120 C70 120 50 100 50 70 C50 40 70 20 100 20 Z' stroke='%238b5cf6' stroke-width='4' stroke-dasharray='5 5'/><circle cx='100' cy='70' r='35' fill='%2314b8a6' fill-opacity='0.2'/><path d='M85 70 L95 80 L115 60' stroke='%2314b8a6' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+                                alt="Get Ready">
+                            <h3>Evaluate Placement Suitability</h3>
+                            <p>Welcome to your corporate preparation hub! Upload your resume or choose demo profiles in the **Resume Analyzer** tab to unlock personalized AI advisory analysis.</p>
+                            <button class="btn btn-primary" onclick="switchTab('resume-parser')">
+                                <i class="fa-solid fa-upload"></i> Go to Resume Scanner
+                            </button>
+                        </div>
+
+                        <div class="advisor-action-list hidden" id="advisor-filled-state">
+                            <!-- Inline recommendations populated dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card dash-side-panel">
+                        <div class="panel-header">
+                            <h2>Recent Activity Feed</h2>
+                        </div>
+                        <div class="activity-feed-list" id="dash-activity-feed">
+                            <div class="activity-item">
+                                <i class="fa-solid fa-circle-check text-teal"></i>
+                                <span>Application initialized successfully.</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fa-solid fa-bell text-purple"></i>
+                                <span>Notification engine online.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: RESUME ANALYZER -->
+            <section id="tab-resume-parser" class="tab-panel">
+                <div class="split-analyzer-layout">
+                    <div class="glass-card input-panel">
+                        <div class="panel-header">
+                            <h2>Scoring & Analysis</h2>
+                            <div class="template-selector">
+                                <label>Demo Profile:</label>
+                                <select id="resume-template-select">
+                                    <option value="">-- Manual Paste / Upload --</option>
+                                    <option value="0">John Doe (Data Analyst)</option>
+                                    <option value="1">Jane Smith (Software Dev)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="upload-dropzone" id="upload-zone">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                            <h3>Upload Student Resume</h3>
+                            <p>Drag & drop PDF, DOCX, or Plain Text (.txt) resume here</p>
+                            <div class="divider"><span>OR</span></div>
+                            <input type="file" id="file-input" class="hidden" accept=".txt,.pdf,.docx">
+                            <button type="button" class="btn btn-secondary" id="btn-browser-files">Browse Files</button>
+                        </div>
+
+                        <div class="textarea-container">
+                            <label>Draft / Extracted Resume Text:</label>
+                            <textarea id="resume-text-input" placeholder="Paste or upload structural resume copy here..."></textarea>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-full-width" id="btn-parse-resume">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Evaluate Resume Score
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-full-width hidden" id="btn-download-ats-report" style="margin-top: 10px;">
+                            <i class="fa-solid fa-download"></i> Download ATS Report (.txt)
+                        </button>
+                    </div>
+
+                    <div class="glass-card result-panel">
+                        <div class="panel-header">
+                            <h2>ATS Scanning Report</h2>
+                            <span id="analysis-timestamp" class="text-muted">Awaiting Action</span>
+                        </div>
+
+                        <div id="parse-loading" class="analysis-loading hidden">
+                            <div class="spinner"></div>
+                            <h3>Analyzing ATS Compliance</h3>
+                            <p>Scanning section headers, checking action verbs, evaluating grammar, and computing keyword matches...</p>
+                            <div class="scanning-bar"></div>
+                        </div>
+
+                        <div id="parse-empty" class="vertical-center-state">
+                            <i class="fa-regular fa-file-pdf large-icon"></i>
+                            <h3>ATS Scans Ready</h3>
+                            <p>Upload your PDF, DOCX, or TXT resume on the left and click **Evaluate Resume Score** to generate full ATS analysis.</p>
+                        </div>
+
+                        <div id="parse-results" class="hidden">
+                            <div class="score-summary-grid">
+                                <div class="gauge-wrapper">
+                                    <svg class="progress-ring" width="120" height="120">
+                                        <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.06)" stroke-width="10" fill="transparent" r="50" cx="60" cy="60" />
+                                        <circle class="progress-ring__circle" id="ats-progress-bar" stroke="url(#purpleGradient)" stroke-width="10" stroke-dasharray="314.16" stroke-dashoffset="314.16" stroke-linecap="round" fill="transparent" r="50" cx="60" cy="60" />
+                                    </svg>
+                                    <div class="gauge-text">
+                                        <span class="score-num" id="ats-score-text">0</span>
+                                        <span class="score-label">ATS Rank</span>
+                                    </div>
+                                </div>
+
+                                <div class="score-breakdown">
+                                    <div class="score-row">
+                                        <span class="label"><i class="fa-solid fa-paragraph text-teal"></i> Grammar Score:</span>
+                                        <span class="value" id="stat-spell-layout">--</span>
+                                    </div>
+                                    <div class="score-row">
+                                        <span class="label"><i class="fa-solid fa-fire text-purple"></i> Action Verbs:</span>
+                                        <span class="value" id="stat-verbs-count">--</span>
+                                    </div>
+                                    <div class="score-row">
+                                        <span class="label"><i class="fa-solid fa-link text-amber"></i> GitHub Linked:</span>
+                                        <span class="value" id="stat-github-linked">--</span>
+                                    </div>
+                                    <div class="score-row">
+                                        <span class="label"><i class="fa-solid fa-briefcase text-pink"></i> Projects & Internships:</span>
+                                        <span class="value" id="stat-projects-interns">--</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="analyzer-details-block" style="margin-top: 15px;">
+                                <h3><i class="fa-solid fa-chart-bar text-gradient"></i> Granular Score Breakdown</h3>
+                                <div class="eval-metric-scorebars">
+                                    <div class="scorebar-group">
+                                        <div class="scorebar-header"><span>Keyword Match</span> <strong id="score-kw-val">--%</strong></div>
+                                        <div class="scorebar-trail"><div class="scorebar-fill bg-teal" id="score-kw-fill" style="width: 0%;"></div></div>
+                                    </div>
+                                    <div class="scorebar-group">
+                                        <div class="scorebar-header"><span>Project Relevance</span> <strong id="score-proj-val">--%</strong></div>
+                                        <div class="scorebar-trail"><div class="scorebar-fill" id="score-proj-fill" style="width: 0%;"></div></div>
+                                    </div>
+                                    <div class="scorebar-group">
+                                        <div class="scorebar-header"><span>Action Verbs</span> <strong id="score-verb-val">--%</strong></div>
+                                        <div class="scorebar-trail"><div class="scorebar-fill bg-tag-orange" id="score-verb-fill" style="width: 0%;"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="analyzer-details-block">
+                                <h3><i class="fa-solid fa-tags text-teal"></i> Extracted Career Skills</h3>
+                                <div class="skills-tag-container" id="detected-skills-tags">
+                                    <!-- tag items injected here -->
+                                </div>
+                            </div>
+
+                            <div class="analyzer-details-block">
+                                <h3><i class="fa-solid fa-list-check text-purple"></i> Targeted Optimization To-Dos & Weaknesses</h3>
+                                <ul class="improvement-checklist-list" id="resume-improvements-list">
+                                    <!-- items created dynamically -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: SKILL GAP IDENTIFIER -->
+            <section id="tab-skill-analyzer" class="tab-panel">
+                <div class="glass-card gap-analyzer-card">
+                    <div class="panel-header-row">
+                        <div class="header-left">
+                            <h2>AI-Powered Relational Skill Analysis</h2>
+                            <p>Targeted Job Role: <strong id="skill-target-role-label">Data Analyst</strong></p>
+                        </div>
+                        <div class="match-meta-pill" id="skill-gap-percentage-badge">0% Match</div>
+                    </div>
+
+                    <div class="gap-grid-comparison">
+                        <div class="gap-visual-column">
+                            <div class="interactive-donut-container">
+                                <div class="dynamic-donut-chart" id="gap-gauge-fill">
+                                    <div class="donut-center">
+                                        <span class="donut-percentage" id="gap-gauge-percentage">0%</span>
+                                        <span class="donut-label">Strength</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gap-statistics-pane">
+                                <div class="bullet-stat">
+                                    <span class="color-dot bg-teal"></span>
+                                    <span class="bullet-label">Skills Matched:</span>
+                                    <span class="bullet-val" id="skills-matched-count">0</span>
+                                </div>
+                                <div class="bullet-stat">
+                                    <span class="color-dot bg-danger"></span>
+                                    <span class="bullet-label">Skills Missing:</span>
+                                    <span class="bullet-val" id="skills-missing-count">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gap-lists-column">
+                            <div class="list-card mat-list">
+                                <h3><i class="fa-solid fa-circle-check text-teal"></i> Required Skills Matched</h3>
+                                <ul class="clean-skill-check-list" id="skills-mastered-list">
+                                    <li class="empty-list-placeholder">Perform analysis to populate</li>
+                                </ul>
+                            </div>
+
+                            <div class="list-card gap-list">
+                                <h3><i class="fa-solid fa-triangle-exclamation text-danger"></i> Missing Skills Gaps</h3>
+                                <ul class="clean-skill-check-list" id="skills-gaps-list">
+                                    <li class="empty-list-placeholder">Perform analysis to populate</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-footer-group">
+                        <p class="guide-text"><i class="fa-solid fa-lightbulb text-amber"></i> The roadmap plan is mapped custom to bridge these missing elements.</p>
+                        <button type="button" class="btn btn-primary" id="btn-trigger-roadmap">
+                            <i class="fa-solid fa-compass"></i> Generate Weekly Learning Roadmap
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: PERSONALIZED WEEKLY LEARNING ROADMAP -->
+            <section id="tab-roadmap" class="tab-panel">
+                <div class="split-roadmap-layout">
+                    <div class="glass-card timeline-card">
+                        <div class="panel-header">
+                            <h2>Weekly Study Roadmap (6-Week Program)</h2>
+                            <div class="header-right">
+                                <span class="roadmap-counter-title">Completed: <span id="roadmap-completion-ratio">0/6 Weeks</span></span>
+                            </div>
+                        </div>
+
+                        <div class="roadmap-welcome-screen" id="roadmap-empty-state">
+                            <i class="fa-solid fa-map-marked-alt large-icon"></i>
+                            <h3>Generate Weekly Learning Schedules</h3>
+                            <p>Construct structured courses timeline tailored directly to your target role skill deficiencies.</p>
+                            <button type="button" class="btn btn-primary" id="btn-build-roadmap-demo">
+                                <i class="fa-solid fa-gears"></i> Initialize 6-Week Roadmap
+                            </button>
+                        </div>
+
+                        <div class="weekly-timeline hidden" id="roadmap-timeline-container">
+                            <!-- Week nodes (Week 1 to Week 6) go here -->
+                        </div>
+                    </div>
+
+                    <div class="glass-card detail-study-card">
+                        <div class="panel-header">
+                            <h2>Module Syllabus & Resources</h2>
+                        </div>
+
+                        <div id="study-details-placeholder" class="vertical-center-state">
+                            <i class="fa-regular fa-compass large-icon text-muted"></i>
+                            <h3>Select a Study Week</h3>
+                            <p>Click any week card item on the left to reveal target syllabus details, coding challenges, and recommended resources.</p>
+                        </div>
+
+                        <div id="study-details-content" class="hidden">
+                            <div class="detail-header-block">
+                                <span class="badge badge-accent" id="detail-skill-level">Week 1</span>
+                                <h2 id="detail-skill-title">Python Basics</h2>
+                                <div class="time-estimate">
+                                    <i class="fa-regular fa-clock"></i> Allocated Hours: <strong id="detail-skill-duration">12 Hours</strong>
+                                </div>
+                            </div>
+
+                            <div class="challenge-description-box" style="margin-bottom: 20px;">
+                                <h4 style="margin-bottom: 4px; color: #fff;">Topics Covered:</h4>
+                                <p id="detail-skill-desc">Variables, Loops, and Functions</p>
+                            </div>
+
+                            <div class="project-challenge-block">
+                                <h3><i class="fa-solid fa-laptop-code text-teal"></i> Weekly Practice Project</h3>
+                                <div class="challenge-description-box">
+                                    <p id="detail-project-challenge">Create a console script mapping algorithms.</p>
+                                </div>
+                            </div>
+
+                            <div class="roadmap-status-picker-box">
+                                <label for="roadmap-node-status">Change Course Progress Status:</label>
+                                <select id="roadmap-node-status" class="custom-select">
+                                    <option value="Pending">Pending ✘</option>
+                                    <option value="In Progress">In Progress ➜</option>
+                                    <option value="Completed">Completed ✔</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: AI MOCK INTERVIEW -->
+            <section id="tab-interview" class="tab-panel">
+                <div class="split-interview-layout">
+                    <div class="glass-card chat-card-container">
+                        <div class="chat-header-row">
+                            <div class="bot-info-card">
+                                <div class="bot-avatar">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <div class="bot-status-details">
+                                    <h3>Placement Coach AI</h3>
+                                    <p><span class="pulse-dot"></span> Voice Ready - Interactive Drill</p>
+                                </div>
+                            </div>
+                            <div class="interview-meta-options">
+                                <button type="button" class="btn-text-small" id="btn-toggle-tts" title="Toggle Voice Read Aloud">
+                                    <i class="fa-solid fa-volume-high text-teal" id="tts-icon"></i> Voice Reading
+                                </button>
+                                <span class="prog-badge" id="interview-progress-pill">Question 0 of 0</span>
+                            </div>
+                        </div>
+
+                        <div class="chatbot-welcome-screen" id="interview-empty-state">
+                            <i class="fa-solid fa-headset large-icon"></i>
+                            <h3>Simulate Placement Queries</h3>
+                            <p>Pick your desired category below to launch custom AI interview sessions.</p>
+
+                            <div class="interview-setting-row">
+                                <div class="setting-col">
+                                    <label>Role Profile:</label>
+                                    <select id="interview-role-select" class="custom-select">
+                                        <!-- Populated via JS -->
+                                    </select>
+                                </div>
+                                <div class="setting-col">
+                                    <label>Interview Category:</label>
+                                    <select id="interview-type-select" class="custom-select">
+                                        <option value="hr">HR Interview</option>
+                                        <option value="technical">Technical Interview</option>
+                                        <option value="coding">Coding Interview</option>
+                                        <option value="mcq">MCQ Interview</option>
+                                        <option value="behavioral">Behavioral Questions</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" id="btn-start-interview">
+                                <i class="fa-solid fa-play"></i> Launch Mock Interview
+                            </button>
+                        </div>
+
+                        <div class="chatbot-active-zone hidden" id="interview-active-zone">
+                            <div class="chat-messages-container" id="chat-messages-box">
+                                <!-- message blocks -->
+                            </div>
+
+                            <div class="chat-input-bar">
+                                <input type="text" id="chat-user-input" placeholder="Type your answer statement here..." disabled>
+                                <button type="button" class="icon-btn" id="btn-mock-speech" title="Voice Recognition Speech-to-Text" disabled>
+                                    <i class="fa-solid fa-microphone" id="mic-icon"></i>
+                                </button>
+                                <button type="button" class="btn btn-primary" id="btn-send-message" disabled>
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </div>
+
+                            <div class="chat-bottom-actions">
+                                <span class="text-mini-alert"><i class="fa-solid fa-info-circle"></i> Type or click the microphone to speak your response.</span>
+                                <button type="button" class="btn btn-danger btn-small" id="btn-abort-interview">
+                                    <i class="fa-solid fa-ban"></i> Exit session
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card evaluation-feedback-card">
+                        <div class="panel-header">
+                            <h2>Feedback & Performance Metrics</h2>
+                        </div>
+
+                        <div id="eval-placeholder" class="vertical-center-state">
+                            <i class="fa-solid fa-ranking-star large-icon text-muted"></i>
+                            <h3>Real-Time Evaluation Panel</h3>
+                            <p>Answers submitted to the interviewer will update feedback parameters here automatically.</p>
+                        </div>
+
+                        <div id="eval-content" class="hidden">
+                            <div class="eval-stats-card">
+                                <div class="eval-metric-circle">
+                                    <span class="eval-score" id="eval-score-num">--</span>
+                                    <span class="eval-unit">/100</span>
+                                </div>
+                                <div class="eval-status-box">
+                                    <h4>Technical Answer Score</h4>
+                                    <p id="eval-strength-label">Processing...</p>
+                                </div>
+                            </div>
+
+                            <div class="eval-metric-scorebars">
+                                <div class="scorebar-group">
+                                    <div class="scorebar-header"><span>Communication Style</span> <strong id="scorebar-comm-val">--/10</strong></div>
+                                    <div class="scorebar-trail"><div class="scorebar-fill" id="scorebar-comm-fill" style="width: 0%;"></div></div>
+                                </div>
+                                <div class="scorebar-group">
+                                    <div class="scorebar-header"><span>Grammar Accuracy</span> <strong id="scorebar-gram-val">--/10</strong></div>
+                                    <div class="scorebar-trail"><div class="scorebar-fill bg-teal" id="scorebar-gram-fill" style="width: 0%;"></div></div>
+                                </div>
+                                <div class="scorebar-group">
+                                    <div class="scorebar-header"><span>Confidence Factor</span> <strong id="scorebar-conf-val">--/10</strong></div>
+                                    <div class="scorebar-trail"><div class="scorebar-fill bg-tag-orange" id="scorebar-conf-fill" style="width: 0%;"></div></div>
+                                </div>
+                            </div>
+
+                            <div class="eval-feedback-block" style="margin-top: 20px;">
+                                <h3><i class="fa-solid fa-key text-teal"></i> Matched Key Terminology</h3>
+                                <div class="keywords-pill-box" id="eval-detected-keywords">
+                                    <!-- keywords lists -->
+                                </div>
+                            </div>
+
+                            <div class="eval-feedback-block">
+                                <h3><i class="fa-solid fa-comment-dots text-purple"></i> Recruiter Critique</h3>
+                                <p class="feedback-text" id="eval-critique-text">Awaiting input statement...</p>
+                            </div>
+                        </div>
+
+                        <div id="eval-scorecard" class="hidden">
+                            <div class="scorecard-header text-center">
+                                <div class="ribbon"><i class="fa-solid fa-shield-halved"></i></div>
+                                <h2>Simulated Evaluation Scorecard</h2>
+                                <p id="scorecard-role-title">Candidate Performance</p>
+                            </div>
+
+                            <div class="scorecard-grades-grid">
+                                <div class="grade-cell">
+                                    <span class="grade-score" id="scorecard-comm-grade">A</span>
+                                    <span class="grade-label">Communication</span>
+                                </div>
+                                <div class="grade-cell">
+                                    <span class="grade-score" id="scorecard-tech-grade">B+</span>
+                                    <span class="grade-label">Tech Accuracy</span>
+                                </div>
+                                <div class="grade-cell">
+                                    <span class="grade-score" id="scorecard-problem-grade">PASS</span>
+                                    <span class="grade-label">Confidence</span>
+                                </div>
+                            </div>
+
+                            <div class="scorecard-summary-card">
+                                <h3>Result Match Rate: <strong id="scorecard-overall-grade">PASS</strong></h3>
+                                <p id="scorecard-summary-feedback">Detailed summary of candidate response patterns...</p>
+                            </div>
+
+                            <div class="scorecard-actions">
+                                <button type="button" class="btn btn-primary btn-full-width" id="btn-restart-interview-flow">
+                                    <i class="fa-solid fa-rotate-left"></i> Run Another Practice Session
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 6: COMPANY PREPARATION & SUITABLE JOB OPPORTUNITIES -->
+            <section id="tab-recommendations" class="tab-panel">
+                <div class="glass-card">
+                    <div class="panel-header-row">
+                        <div class="header-left">
+                            <h2>17 Recruiter Companies Preparation Hub</h2>
+                            <p>Detailed hiring processes, eligibility criteria, interview stages, coding queries, and salary insights.</p>
+                        </div>
+                        <div class="match-meta-pill" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.15)); border-color: var(--primary); text-shadow: 0 0 10px var(--primary);">
+                            Placement Suitability Matrix
+                        </div>
+                    </div>
+
+                    <div class="recommendations-overview-pane">
+                        <div class="glass-card stat-sub-card">
+                            <h4>Target Role:</h4>
+                            <p class="role-stat-hl text-gradient" id="recom-best-role">Software Developer</p>
+                        </div>
+                        <div class="glass-card stat-sub-card">
+                            <h4>Job Readiness Score:</h4>
+                            <p class="role-stat-hl text-teal" id="recom-best-readiness">75% Ready</p>
+                        </div>
+                    </div>
+
+                    <h3 class="placement-sub-header">Corporate Hiring Guidelines & Preparation Details:</h3>
+                    <div class="company-fit-grid" id="company-fit-container">
+                        <!-- Dynamically populated company cards -->
+                    </div>
+
+                    <!-- NEW SECTION: SUITABLE JOB OPENINGS (AI-POWERED) -->
+                    <div style="margin-top: 40px; border-top: 1px solid var(--border-glass); padding-top: 30px;">
+                        <div class="panel-header-row" style="margin-bottom: 20px;">
+                            <div class="header-left">
+                                <h2 style="font-size: 1.6rem; color: #fff;"><i class="fa-solid fa-briefcase text-teal"></i> Suitable Job Opportunities</h2>
+                                <p class="text-muted">AI-matched corporate job openings with official career application links, match scores, and application tracking.</p>
+                            </div>
+                            <div class="header-right">
+                                <span class="badge badge-accent"><i class="fa-solid fa-bolt"></i> Live AI Match Engine</span>
+                            </div>
+                        </div>
+
+                        <!-- Search & Filter Controls Toolbar -->
+                        <div class="job-toolbar-row" style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;">
+                            <div class="search-input-wrapper" style="flex: 1; min-width: 250px; position: relative;">
+                                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                                <input type="text" id="job-search-input" class="custom-input-field" placeholder="Search by company, role title, skills, or location..." style="padding-left: 40px; width: 100%;">
+                            </div>
+                            <div class="job-filter-selects" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <select id="job-filter-mode" class="custom-select" style="min-width: 120px;">
+                                    <option value="all">Work Mode: All</option>
+                                    <option value="Remote">Remote</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="Onsite">Onsite</option>
+                                </select>
+                                <select id="job-filter-type" class="custom-select" style="min-width: 130px;">
+                                    <option value="all">Job Type: All</option>
+                                    <option value="Full-Time">Full-Time</option>
+                                    <option value="Internship">Internship</option>
+                                    <option value="Contract">Contract</option>
+                                </select>
+                                <select id="job-filter-exp" class="custom-select" style="min-width: 140px;">
+                                    <option value="all">Experience: All</option>
+                                    <option value="fresher">Fresher (0-1 yrs)</option>
+                                    <option value="experienced">1-3 yrs</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Recommendation Category Filter Tabs -->
+                        <div class="job-rec-tabs" id="job-rec-tabs" style="display: flex; gap: 8px; border-bottom: 1px solid var(--border-glass); padding-bottom: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+                            <button type="button" class="btn-filter-pill active" data-tab="all">All Openings</button>
+                            <button type="button" class="btn-filter-pill" data-tab="top-match"><i class="fa-solid fa-star text-amber"></i> Top Matches (AI)</button>
+                            <button type="button" class="btn-filter-pill" data-tab="internship"><i class="fa-solid fa-graduation-cap text-teal"></i> Internships</button>
+                            <button type="button" class="btn-filter-pill" data-tab="remote"><i class="fa-solid fa-house-laptop text-pink"></i> Remote Jobs</button>
+                            <button type="button" class="btn-filter-pill" data-tab="freshers"><i class="fa-solid fa-seedling text-teal"></i> Freshers</button>
+                            <button type="button" class="btn-filter-pill" data-tab="saved"><i class="fa-solid fa-bookmark text-purple"></i> Saved Jobs (<span id="saved-jobs-count">0</span>)</button>
+                            <button type="button" class="btn-filter-pill" data-tab="tracker"><i class="fa-solid fa-list-check text-gradient"></i> Application Tracker (<span id="tracker-jobs-count">0</span>)</button>
+                        </div>
+
+                        <!-- Main Job Cards Grid Container -->
+                        <div class="job-cards-grid" id="job-cards-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+                            <!-- Job cards injected dynamically via JS -->
+                        </div>
+
+                        <!-- Application Tracker View Container (Hidden by Default) -->
+                        <div id="job-tracker-container" class="hidden">
+                            <h3 style="color: #fff; margin-bottom: 16px;"><i class="fa-solid fa-route text-teal"></i> Submitted Job Applications Tracker</h3>
+                            <div class="tracker-list-box" id="job-tracker-list" style="display: flex; flex-direction: column; gap: 14px;">
+                                <!-- Application tracker rows injected dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 7: PLACEMENT TRACKER -->
+            <section id="tab-placement-tracker" class="tab-panel">
+                <div class="glass-card">
+                    <div class="panel-header-row">
+                        <div class="header-left">
+                            <h2><i class="fa-solid fa-clipboard-check text-purple"></i> Placement Applications & Interview Tracker</h2>
+                            <p>Monitor your corporate applications, test schedules, technical & HR rounds, next interview dates, and offer status in real time.</p>
+                        </div>
+                        <div class="header-right">
+                            <button type="button" class="btn btn-primary" id="btn-open-placement-modal">
+                                <i class="fa-solid fa-plus"></i> Log New Application
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Executive Statistics Summary Dashboard -->
+                    <div class="dashboard-stats-grid" style="margin-top: 16px; margin-bottom: 20px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                        <div class="glass-card stat-card" style="padding: 14px 18px;">
+                            <div class="stat-content">
+                                <h3 style="font-size: 0.82rem; color: var(--text-secondary);">Total Applications</h3>
+                                <p class="stat-value text-gradient" style="font-size: 1.6rem;" id="tracker-stat-total">0</p>
+                            </div>
+                        </div>
+                        <div class="glass-card stat-card" style="padding: 14px 18px;">
+                            <div class="stat-content">
+                                <h3 style="font-size: 0.82rem; color: var(--text-secondary);">Active Interviews</h3>
+                                <p class="stat-value text-teal" style="font-size: 1.6rem;" id="tracker-stat-interviews">0</p>
+                            </div>
+                        </div>
+                        <div class="glass-card stat-card" style="padding: 14px 18px;">
+                            <div class="stat-content">
+                                <h3 style="font-size: 0.82rem; color: var(--text-secondary);">Offers Received</h3>
+                                <p class="stat-value text-purple" style="font-size: 1.6rem;" id="tracker-stat-offers">0</p>
+                            </div>
+                        </div>
+                        <div class="glass-card stat-card" style="padding: 14px 18px;">
+                            <div class="stat-content">
+                                <h3 style="font-size: 0.82rem; color: var(--text-secondary);">Rejections</h3>
+                                <p class="stat-value text-pink" style="font-size: 1.6rem;" id="tracker-stat-rejections">0</p>
+                            </div>
+                        </div>
+                        <div class="glass-card stat-card" style="padding: 14px 18px;">
+                            <div class="stat-content">
+                                <h3 style="font-size: 0.82rem; color: var(--text-secondary);">Success Rate</h3>
+                                <p class="stat-value text-amber" style="font-size: 1.6rem;" id="tracker-stat-rate">0%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search & Filter Controls Toolbar -->
+                    <div class="db-toolbar-row" style="display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+                        <div class="search-input-wrapper" style="flex: 1; min-width: 250px; position: relative;">
+                            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                            <input type="text" id="tracker-search-input" class="custom-input-field" placeholder="Search by company name, job role, notes, or status..." style="padding-left: 40px; width: 100%;">
+                        </div>
+                        <div class="tracker-filter-pills" id="tracker-filter-pills" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                            <button type="button" class="btn-filter-pill active" data-filter="all">All</button>
+                            <button type="button" class="btn-filter-pill" data-filter="Applied">Applied</button>
+                            <button type="button" class="btn-filter-pill" data-filter="Online Assessment">Assessment</button>
+                            <button type="button" class="btn-filter-pill" data-filter="Technical Round">Technical</button>
+                            <button type="button" class="btn-filter-pill" data-filter="HR Round">HR Round</button>
+                            <button type="button" class="btn-filter-pill" data-filter="Offer Received">Offers 🎉</button>
+                            <button type="button" class="btn-filter-pill" data-filter="Selected">Selected ✔</button>
+                            <button type="button" class="btn-filter-pill" data-filter="Rejected">Rejected</button>
+                        </div>
+                    </div>
+
+                    <!-- Applications List Cards Container -->
+                    <div id="placement-tracker-list-container" style="display: flex; flex-direction: column; gap: 16px;">
+                        <!-- Dynamically populated via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 8: PROFILE MANAGEMENT -->
+            <section id="tab-profile" class="tab-panel">
+                <div class="glass-card" style="max-width: 600px; margin: 0 auto;">
+                    <div class="panel-header">
+                        <h2>Student Profile Management</h2>
+                    </div>
+                    <form id="form-profile-update">
+                        <div class="form-group">
+                            <label>Full Student Name</label>
+                            <input type="text" id="prof-name" class="custom-input-field" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Institutional Email</label>
+                            <input type="email" id="prof-email" class="custom-input-field" disabled>
+                            <span class="input-note text-muted">Primary identifier. Cannot be edited.</span>
+                        </div>
+                        <div class="form-group">
+                            <label>College / University Affiliation</label>
+                            <input type="text" id="prof-college" class="custom-input-field" required>
+                        </div>
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label>Branch / Major</label>
+                                <input type="text" id="prof-branch" class="custom-input-field" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Year of Graduation</label>
+                                <input type="number" id="prof-gradyear" class="custom-input-field" required>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px; margin-top: 15px;">
+                            <button type="submit" class="btn btn-primary" style="flex: 1;">Update Profile Details</button>
+                            <button type="button" class="btn btn-danger" id="btn-profile-logout"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- JOB DETAILS MODAL -->
+    <div class="flashcard-modal-backdrop hidden" id="job-details-modal">
+        <div class="flashcard-modal-content glass-card" style="max-width: 750px; max-height: 90vh; overflow-y: auto;">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="company-logo-icon" id="modal-job-logo"><i class="fa-brands fa-google"></i></div>
+                    <div>
+                        <h3 id="modal-job-title" style="color: #fff; font-size: 1.25rem;">Job Title</h3>
+                        <p id="modal-job-company" class="text-muted" style="font-size: 0.85rem;">Company Name</p>
+                    </div>
+                </div>
+                <button type="button" class="icon-btn" id="btn-close-job-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body-content" style="padding: 20px 0; display: flex; flex-direction: column; gap: 16px;">
+                <!-- AI Match Banner -->
+                <div class="glass-card" style="padding: 14px; background: rgba(139, 92, 246, 0.08); border-color: var(--primary);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4 style="color: #fff;"><i class="fa-solid fa-wand-magic-sparkles text-gradient"></i> AI Qualification Match</h4>
+                            <p id="modal-match-summary" class="text-muted" style="font-size: 0.82rem;">Calculated from your resume & skills</p>
+                        </div>
+                        <span class="fit-pct-badge" id="modal-match-score-badge" style="font-size: 1.2rem; font-weight: 800;">92% Match</span>
+                    </div>
+                </div>
+
+                <!-- Job Quick Info Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; background: rgba(255,255,255,0.02); padding: 14px; border-radius: var(--border-radius-sm); border: 1px solid var(--border-glass);">
+                    <div><span class="text-muted" style="font-size: 0.78rem;">Salary Range:</span><br><strong id="modal-job-salary" class="text-teal">--</strong></div>
+                    <div><span class="text-muted" style="font-size: 0.78rem;">Work Mode & Type:</span><br><strong id="modal-job-mode">--</strong></div>
+                    <div><span class="text-muted" style="font-size: 0.78rem;">Location:</span><br><strong id="modal-job-location">--</strong></div>
+                    <div><span class="text-muted" style="font-size: 0.78rem;">Application Deadline:</span><br><strong id="modal-job-deadline" class="text-amber">--</strong></div>
+                </div>
+
+                <!-- Job Description -->
+                <div>
+                    <h4 style="color: #fff; margin-bottom: 6px;"><i class="fa-solid fa-file-text text-purple"></i> Job Description</h4>
+                    <p id="modal-job-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;"></p>
+                </div>
+
+                <!-- Responsibilities -->
+                <div>
+                    <h4 style="color: #fff; margin-bottom: 6px;"><i class="fa-solid fa-tasks text-teal"></i> Key Responsibilities</h4>
+                    <ul id="modal-job-resp" style="padding-left: 20px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;"></ul>
+                </div>
+
+                <!-- Skill Match Breakdown -->
+                <div>
+                    <h4 style="color: #fff; margin-bottom: 6px;"><i class="fa-solid fa-sliders text-pink"></i> Skills Evaluation Matrix</h4>
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <h5 class="text-teal" style="font-size: 0.82rem; margin-bottom: 6px;">Matching Skills:</h5>
+                            <div id="modal-matching-skills" style="display: flex; gap: 6px; flex-wrap: wrap;"></div>
+                        </div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <h5 class="text-danger" style="font-size: 0.82rem; margin-bottom: 6px;">Missing Skill Gaps:</h5>
+                            <div id="modal-missing-skills" style="display: flex; gap: 6px; flex-wrap: wrap;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Courses to Bridge Gap -->
+                <div class="glass-card" style="padding: 14px;">
+                    <h4 style="color: #fff; margin-bottom: 6px;"><i class="fa-solid fa-graduation-cap text-amber"></i> AI Bridge Plan & Recommended Courses</h4>
+                    <p style="font-size: 0.82rem; color: var(--text-secondary);">Estimated time to 100% eligibility: <strong class="text-teal" id="modal-est-time">1-2 Weeks</strong></p>
+                    <ul id="modal-rec-courses" style="padding-left: 20px; margin-top: 6px; font-size: 0.82rem; color: var(--text-secondary);">
+                        <li>CS50 Algorithm Foundations (Harvard edX)</li>
+                        <li>Full Stack Web Development Masterclass</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="modal-footer-actions" style="display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--border-glass);">
+                <button type="button" class="btn btn-secondary" id="modal-btn-bookmark"><i class="fa-solid fa-bookmark"></i> Bookmark Job</button>
+                <button type="button" class="btn btn-primary" id="modal-btn-apply"><i class="fa-solid fa-paper-plane"></i> Apply Now (Official Site) <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPANY PROFILE MODAL -->
+    <div class="flashcard-modal-backdrop hidden" id="company-profile-modal">
+        <div class="flashcard-modal-content glass-card" style="max-width: 650px;">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="company-logo-icon" id="cp-modal-logo"><i class="fa-brands fa-building"></i></div>
+                    <div>
+                        <h3 id="cp-modal-name" style="color: #fff; font-size: 1.25rem;">Company Name</h3>
+                        <p id="cp-modal-rating" class="text-amber" style="font-size: 0.85rem;">4.5 ★ Glassdoor Rating</p>
+                    </div>
+                </div>
+                <button type="button" class="icon-btn" id="btn-close-cp-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body-content" style="padding: 16px 0; display: flex; flex-direction: column; gap: 14px;">
+                <div>
+                    <h4 style="color: #fff; margin-bottom: 4px;"><i class="fa-solid fa-building text-purple"></i> Overview</h4>
+                    <p id="cp-modal-overview" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;"></p>
+                </div>
+                <div>
+                    <h4 style="color: #fff; margin-bottom: 4px;"><i class="fa-solid fa-users text-teal"></i> Work Culture & Values</h4>
+                    <p id="cp-modal-culture" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;"></p>
+                </div>
+                <div>
+                    <h4 style="color: #fff; margin-bottom: 6px;"><i class="fa-solid fa-layer-group text-pink"></i> Technology Stack</h4>
+                    <div id="cp-modal-techstack" style="display: flex; gap: 6px; flex-wrap: wrap;"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer-actions" style="display: flex; justify-content: flex-end; padding-top: 14px; border-top: 1px solid var(--border-glass);">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="cp-modal-btn-site"><i class="fa-solid fa-globe"></i> Visit Official Careers Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLACEMENT AI QUESTION CHATBOT DRAWER -->
+    <div class="chat-drawer" id="placement-ai-chat-drawer">
+        <div class="drawer-header" id="btn-toggle-drawer">
+            <div class="drawer-title">
+                <i class="fa-solid fa-circle-question text-purple"></i>
+                <span>Placement Chatbot Advice</span>
+            </div>
+            <i class="fa-solid fa-chevron-up toggle-indicator"></i>
+        </div>
+        <div class="drawer-body hidden" id="drawer-chat-body">
+            <div class="drawer-messages" id="drawer-messages-box">
+                <div class="drawer-msg bot">
+                    <p>Hi! Ask me placement queries (e.g. **ats**, **Google**, **TCS**, **Zoho**, **Infosys**, **resume**, **tips**). Type below!</p>
+                </div>
+            </div>
+            <div class="drawer-input-row">
+                <input type="text" id="drawer-user-input" placeholder="Ask about resume, ATS, Zoho, Google...">
+                <button type="button" class="btn btn-primary" id="btn-send-drawer-msg"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DAILY FLASHCARDS PRACTICE MODAL -->
+    <div class="flashcard-modal-backdrop hidden" id="flashcard-modal">
+        <div class="flashcard-modal-content glass-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-fire-flame-curved text-pink"></i> Daily Preparation Flashcards</h3>
+                <button type="button" class="icon-btn" id="btn-close-flashcard"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="flashcard-progress-bar">
+                <div class="flashcard-progress-fill" id="fc-progress-fill" style="width: 33%;"></div>
+            </div>
+            <div class="flashcard-body-card">
+                <div class="card-type-tag" id="fc-type">Aptitude</div>
+                <h4 class="card-question-text" id="fc-question">Calculating probability...</h4>
+                <div class="card-options-box" id="fc-options-box">
+                    <!-- option buttons -->
+                </div>
+                <div class="card-explanation hidden" id="fc-explanation-box">
+                    <p id="fc-explanation-text">Explanation content...</p>
+                </div>
+            </div>
+            <div class="flashcard-footer">
+                <button type="button" class="btn btn-secondary" id="btn-prev-fc">Back</button>
+                <button type="button" class="btn btn-primary" id="btn-next-fc">Next Question <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    <!-- MODAL: LOG / EDIT PLACEMENT APPLICATION -->
+    <div id="placement-app-modal" class="auth-overlay-backdrop hidden" style="z-index: 10500;">
+        <div class="auth-card glass-card" style="max-width: 580px; width: 90%; padding: 28px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+                <h3 style="color: #fff; font-size: 1.3rem; margin: 0;"><i class="fa-solid fa-clipboard-check text-purple"></i> <span id="placement-modal-title">Log Placement Application</span></h3>
+                <button type="button" class="btn-text-small" id="btn-close-placement-modal" style="color: var(--text-muted); font-size: 1.2rem;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <form id="form-placement-app">
+                <input type="hidden" id="placement-app-id">
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-building text-teal"></i> Company Name</label>
+                        <input type="text" id="papp-company" class="custom-input-field" placeholder="e.g. Google, Microsoft, Amazon" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-briefcase text-purple"></i> Job Role Title</label>
+                        <input type="text" id="papp-title" class="custom-input-field" placeholder="e.g. Software Engineer I" required>
+                    </div>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-calendar-day text-amber"></i> Application Date</label>
+                        <input type="date" id="papp-applied-date" class="custom-input-field" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-clock text-pink"></i> Next Interview Date</label>
+                        <input type="date" id="papp-next-date" class="custom-input-field">
+                    </div>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-flag text-teal"></i> Current Application Status</label>
+                        <select id="papp-status" class="custom-select" style="width: 100%;">
+                            <option value="Applied">Applied</option>
+                            <option value="Online Assessment">Online Assessment</option>
+                            <option value="Technical Round">Technical Round</option>
+                            <option value="HR Round">HR Round</option>
+                            <option value="Offer Received">Offer Received 🎉</option>
+                            <option value="Selected">Selected ✔</option>
+                            <option value="Rejected">Rejected ✘</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-coins text-amber"></i> Salary Package / Offer</label>
+                        <input type="text" id="papp-salary" class="custom-input-field" placeholder="e.g. ₹18 LPA or Expected">
+                    </div>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-laptop-code text-teal"></i> Assessment Details</label>
+                        <input type="text" id="papp-round-oa" class="custom-input-field" placeholder="e.g. Passed (90 mins OA)">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-comments text-purple"></i> Tech & HR Round Notes</label>
+                        <input type="text" id="papp-round-tech" class="custom-input-field" placeholder="e.g. System Design Round scheduled">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-sticky-note text-pink"></i> Preparation Notes & Next Steps</label>
+                    <textarea id="papp-notes" class="custom-input-field" rows="2" placeholder="Revise System Design, DSA Graphs, and Behavioral STAR questions..."></textarea>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 20px;">
+                    <button type="button" class="btn btn-secondary" id="btn-cancel-placement-modal" style="flex: 1;">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 2;"><i class="fa-solid fa-floppy-disk"></i> Save Application Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- JS Data Modules (split) -->
+    <script src="data/roles.js?v=3"></script>
+    <script src="data/companies.js?v=3"></script>
+    <script src="data/jobs.js?v=3"></script>
+    <script src="data/colleges.js?v=3"></script>
+    <script src="data/roadmaps.js?v=3"></script>
+    <script src="data/knowledge.js?v=3"></script>
+
+    <!-- JS Modular Engine Services -->
+    <script src="js/utils.js?v=3"></script>
+    <script src="js/auth.js?v=3"></script>
+    <script src="js/app.js?v=3"></script>
+    <script src="js/google-auth.js?v=3"></script>
+    <script src="js/navigation.js?v=3"></script>
+    <script src="js/landing.js?v=6"></script>
+    <script src="js/auth-left.js?v=6"></script>
+    <!-- Main Application Controller (contains all features) -->
+    <script src="data.js?v=3"></script>
+    <script src="app.js?v=3"></script>
+
+    <!-- Ultra-Premium Micro-Interactions & Lucide Icons Init -->
+    <script>
+        // Initialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // Cursor spotlight effect
+        (function() {
+            const spotlight = document.getElementById('cursor-spotlight');
+            if (!spotlight) return;
+            let rafId;
+            let targetX = window.innerWidth / 2;
+            let targetY = window.innerHeight / 2;
+            let currentX = targetX;
+            let currentY = targetY;
+
+            document.addEventListener('mousemove', function(e) {
+                targetX = e.clientX;
+                targetY = e.clientY;
+            });
+
+            function animateSpotlight() {
+                currentX += (targetX - currentX) * 0.08;
+                currentY += (targetY - currentY) * 0.08;
+                spotlight.style.left = currentX + 'px';
+                spotlight.style.top  = currentY + 'px';
+                rafId = requestAnimationFrame(animateSpotlight);
+            }
+            animateSpotlight();
+
+            // Hide on mouse leave
+            document.addEventListener('mouseleave', () => { spotlight.style.opacity = '0'; });
+            document.addEventListener('mouseenter', () => { spotlight.style.opacity = '1'; });
+        })();
+
+        // Card hover shine effect
+        document.addEventListener('mousemove', function(e) {
+            document.querySelectorAll('.glass-card').forEach(function(card) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+                    const xPct = (x / rect.width) * 100;
+                    const yPct = (y / rect.height) * 100;
+                    card.style.setProperty('--shine-x', xPct + '%');
+                    card.style.setProperty('--shine-y', yPct + '%');
+                }
+            });
+        });
+
+        // Animate stat progress bars on tab visibility
+        function animateScoreBars() {
+            document.querySelectorAll('.scorebar-fill').forEach(function(bar) {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(function() { bar.style.width = targetWidth; }, 100);
+            });
+        }
+
+        // Smooth number counter animation for stat values
+        function animateCounters() {
+            document.querySelectorAll('.stat-value[data-target]').forEach(function(el) {
+                const target = parseInt(el.getAttribute('data-target'));
+                if (isNaN(target)) return;
+                let current = 0;
+                const increment = Math.ceil(target / 40);
+                const timer = setInterval(function() {
+                    current = Math.min(current + increment, target);
+                    el.textContent = current;
+                    if (current >= target) clearInterval(timer);
+                }, 30);
+            });
+        }
+
+        // Trigger on tab switch
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('[data-tab]')) {
+                setTimeout(function() {
+                    animateScoreBars();
+                    animateCounters();
+                }, 100);
+            }
+        });
+    </script>
+</body>
+
+
+</html>
