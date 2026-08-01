@@ -7,7 +7,7 @@ const { sendPasswordResetEmail } = require("../utils/sendPasswordResetEmail");
 const JWT_SECRET = process.env.JWT_SECRET || "ai_career_coach_jwt_secret_key_2026_x89f";
 const VERIFY_EXPIRES = process.env.EMAIL_VERIFY_EXPIRES_IN || "15m";
 const JWT_EXPIRES = process.env.JWT_EXPIRES_IN || "7d";
-const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5000";
+const CLIENT_URL = process.env.CLIENT_URL || "https://ai-career-coach-sage-xi.vercel.app";
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET);
 
